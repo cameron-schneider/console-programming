@@ -1,0 +1,18 @@
+{
+	"source": "UE",
+	"applications": [
+		{
+			"app_key": "application.generated.ue.fpsgame-0.ue4editor.exe",
+			"launch_type": "url",
+			"url": "steam://launch/",
+			"action_manifest_path": "E:/_School/Senior Shitshow/Second Sem/Console Programming/console-programming/SimpleFPSTemplate-master/Config/SteamVRBindings/steamvr_manifest.json",
+			"strings":
+			{
+				"en_us":
+				{
+					"name": "FPSGame-0 [UE Editor]"
+				}
+			}
+		}
+	]
+}
