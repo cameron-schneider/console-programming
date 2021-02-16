@@ -36,7 +36,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
-	void DeathResponse();
+	virtual void DeathResponse();
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AFPSCube> SpawnedActor;
