@@ -9,7 +9,7 @@
 
 class UStaticMeshComponent;
 
-//DECLARE_DELEGATE
+DECLARE_MULTICAST_DELEGATE(FDeathDelegate);
 
 UCLASS()
 class FPSGAME_API AFPSCube : public AActor
@@ -29,11 +29,17 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	float CurrentHealth;
 
+	FDeathDelegate OnDeath;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void OnDeath();
+	UFUNCTION()
+	void DeathResponse();
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AFPSCube> SpawnedActor;
 
 public:	
 	// Called every frame
