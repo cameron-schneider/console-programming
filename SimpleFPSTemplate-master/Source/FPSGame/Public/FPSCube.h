@@ -46,6 +46,9 @@ protected:
 	//called when the cube dies
 	UFUNCTION()
 	virtual void DeathResponse();
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AFPSCube> SpawnedActor;
 	
 	UFUNCTION()
 	virtual void SpawnExplosion();		//make explosion actor when cube dies
