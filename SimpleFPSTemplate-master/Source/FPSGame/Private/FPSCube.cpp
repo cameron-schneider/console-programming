@@ -37,8 +37,10 @@ void AFPSCube::DeathResponse()
 
 	AActor* pawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-	if (SpawnedActor != NULL)
+	if (SpawnedActor)
 	{
+		//If we have a valid actor to spawn, we're going to spawn 4 of them with slight offsets to avoid spawn collisions
+
 		FActorSpawnParameters* params = new FActorSpawnParameters();
 		params->Owner = pawn;
 		params->SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
