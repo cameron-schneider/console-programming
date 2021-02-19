@@ -41,6 +41,16 @@ float AFPSCube::TakeDamage(float DamageTaken, FDamageEvent const& DamageEvent, A
 	// This sets the instanced material parameter "Color" to a value between Green and Red based on health percentage.
 	CubeMesh->SetVectorParameterValueOnMaterials(TEXT("Color"), FVector4::FVector4((1.0f - CurrentHealth / MaxHealth), CurrentHealth / MaxHealth, 0.0f, 1.0f));
 
+	//function for scaling down as cubes are hit, put in here for cleaner code and transposed from code example in tutorial video
+	FVector Scale = CubeMesh->GetComponentScale();		
+	Scale *= 0.8f;										//scaling factor applied to copy of cubemesh's scale
+	CubeMesh->SetWorldScale3D(Scale);					//applying new scale to cubemesh
+
+	if (CurrentHealth <= 0)			//using health to determine when cube should be destroyed instead of scale like in tutorial code
+	{
+		Destroy();
+	}
+
 	return 0.0f;
 }
 
