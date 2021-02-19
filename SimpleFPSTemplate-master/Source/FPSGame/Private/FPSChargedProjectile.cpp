@@ -4,4 +4,5 @@
 #include "FPSChargedProjectile.h"
 
 AFPSChargedProjectile::AFPSChargedProjectile()
-{}
+{
+}
