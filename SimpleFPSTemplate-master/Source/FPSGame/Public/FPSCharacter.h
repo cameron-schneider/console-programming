@@ -53,6 +53,9 @@ protected:
 	/** Fires a projectile. */
 	void Fire();
 
+	/** Charges the charged projectile. */
+	void Charge();
+
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
