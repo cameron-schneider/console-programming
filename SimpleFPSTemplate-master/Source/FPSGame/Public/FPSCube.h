@@ -40,7 +40,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
 	TSubclassOf<AFPSBombActor> BombClass;
 
-	//referenced Connor's Step 2 branch: death delegate is called when health <= 0.0f
+	//referenced Cameron's Step 2 branch: death delegate is called when health <= 0.0f
 	FDeathDelegate OnDeath;
 
 protected:
