@@ -2,6 +2,7 @@
 
 #include "FPSCharacter.h"
 #include "FPSProjectile.h"
+#include "FPSChargedProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -28,6 +29,9 @@ AFPSCharacter::AFPSCharacter()
 	GunMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FP_Gun"));
 	GunMeshComponent->CastShadow = false;
 	GunMeshComponent->SetupAttachment(Mesh1PComponent, "GripPoint");
+
+	//starting val for amountcharged
+	AmountCharged = 0.1f;
 }
 
 
@@ -39,6 +43,7 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
 	PlayerInputComponent->BindAction("Charge", IE_Pressed, this, &AFPSCharacter::Charge);
+	PlayerInputComponent->BindAction("Charge", IE_Released, this, &AFPSCharacter::FireCharged);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFPSCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFPSCharacter::MoveRight);
@@ -86,8 +91,53 @@ void AFPSCharacter::Fire()
 
 void AFPSCharacter::Charge()
 {
+	if (AmountCharged < 1.0f)
+	{
+		AmountCharged += 0.1f;
+	}
 }
 
+void AFPSCharacter::FireCharged()
+{
+	//largely derived from Fire() but needs other class as input
+	// try and fire a projectile
+	if (ChargedProjectileClass)
+	{
+		// Grabs location from the mesh that must have a socket called "Muzzle" in his skeleton
+		FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");
+		// Use controller rotation which is our view direction in first person
+		FRotator MuzzleRotation = GetControlRotation();
+
+		//Set Spawn Collision Handling Override
+		FActorSpawnParameters ActorSpawnParams;
+		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+
+		//
+		AFPSChargedProjectile* ChargedProjectile;
+
+		// spawn the projectile at the muzzle
+		ChargedProjectile = GetWorld()->SpawnActor<AFPSChargedProjectile>(ChargedProjectileClass, MuzzleLocation, MuzzleRotation, ActorSpawnParams);
+
+		ChargedProjectile->ChangeCharge(AmountCharged);
+
+		// try and play the sound if specified
+		if (FireSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+		}
+
+		// try and play a firing animation if specified
+		if (FireAnimation)
+		{
+			// Get the animation object for the arms mesh
+			UAnimInstance* AnimInstance = Mesh1PComponent->GetAnimInstance();
+			if (AnimInstance)
+			{
+				AnimInstance->PlaySlotAnimationAsDynamicMontage(FireAnimation, "Arms", 0.0f);
+			}
+		}
+	}
+}
 
 void AFPSCharacter::MoveForward(float Value)
 {

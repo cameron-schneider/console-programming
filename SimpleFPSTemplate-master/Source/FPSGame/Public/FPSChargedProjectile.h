@@ -15,5 +15,23 @@ UCLASS()
 class FPSGAME_API AFPSChargedProjectile : public AFPSProjectile
 {
 	GENERATED_BODY()
+
+	
+
+protected:
+
+	//UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	
+
+public:
+//	AFPSChargedProjectile(float StartCharge);
+
+//change charge percentile
+	UFUNCTION()
+	void ChangeCharge(float NewCharge);
+
+	UPROPERTY(EditAnywhere)
+	float AmountCharged;
 	
 };

@@ -10,6 +10,7 @@ class UInputComponent;
 class USkeletalMeshComponent;
 class UCameraComponent;
 class AFPSProjectile;
+class AFPSChargedProjectile;
 class USoundBase;
 class UAnimSequence;
 
@@ -40,6 +41,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Projectile")
 	TSubclassOf<AFPSProjectile> ProjectileClass;
 
+	/** Charged Projectile class to spawn*/
+	UPROPERTY(EditDefaultsOnly, Category="Projectile")
+	TSubclassOf<AFPSChargedProjectile> ChargedProjectileClass;
+
 	/** Sound to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, Category="Gameplay")
 	USoundBase* FireSound;
@@ -56,6 +61,9 @@ protected:
 	/** Charges the charged projectile. */
 	void Charge();
 
+	/** Fires the charged projectile. */
+	void FireCharged();
+
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
@@ -63,6 +71,8 @@ protected:
 	void MoveRight(float Val);
 
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
+
+	float AmountCharged;
 
 public:
 	/** Returns Mesh1P subobject **/

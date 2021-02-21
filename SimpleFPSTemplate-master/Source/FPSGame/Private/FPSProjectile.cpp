@@ -44,17 +44,6 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		{
 			OtherActor->TakeDamage(25.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
 
-			//scaling down as cube takes damage
-		/*
-			FVector Scale = OtherComp->GetComponentScale();
-			Scale *= 0.8f;
-			
-			if(Scale.GetMin() < 0.5f)
-			{
-				OtherActor->Destroy();
-			}
-
-			OtherComp->SetWorldScale3D(Scale);	*/
 		}
 
 		Destroy();
