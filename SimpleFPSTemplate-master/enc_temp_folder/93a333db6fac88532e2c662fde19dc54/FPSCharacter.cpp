@@ -30,13 +30,11 @@ AFPSCharacter::AFPSCharacter()
 	GunMeshComponent->CastShadow = false;
 	GunMeshComponent->SetupAttachment(Mesh1PComponent, "GripPoint");
 
-	//starting val for amountcharged and timetocooldown
+	//starting val for amountcharged
 	AmountCharged = 0.1f;
-	TimeToCoolDown = 0.0f;
 
-	//starting val for isCharging and IsCoolDown
+	//starting val for isCharging
 	IsCharging = false;
-	IsCoolDown = false;
 }
 
 
@@ -63,23 +61,9 @@ void AFPSCharacter::Tick(float DeltaTime)
 
 	if(IsCharging == true)
 	{ 
-		if (AmountCharged <= 1.0f)
+		if (AmountCharged < 1.0f)
 		{
-			AmountCharged += DeltaTime;
-		}
-	}
-
-	if (IsCoolDown == true)
-	{
-		if(TimeToCoolDown < 3.0f)
-		{ 
-			TimeToCoolDown += DeltaTime;
-		}
-		else if (TimeToCoolDown >= 3.0f)
-		{
-			TimeToCoolDown = 0.0f;
-			IsCoolDown = false;
-
+			AmountCharged += 0.1f;
 		}
 	}
 
@@ -133,9 +117,7 @@ void AFPSCharacter::FireCharged()
 	//largely derived from Fire() but needs other class as input
 	// try and fire a projectile
 	if (ChargedProjectileClass)
-	{ 
-		if (TimeToCoolDown <= 0.0f)
-		{ 
+	{
 		// Grabs location from the mesh that must have a socket called "Muzzle" in his skeleton
 		FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");
 		// Use controller rotation which is our view direction in first person
@@ -169,22 +151,9 @@ void AFPSCharacter::FireCharged()
 				AnimInstance->PlaySlotAnimationAsDynamicMontage(FireAnimation, "Arms", 0.0f);
 			}
 		}
-		
-		}
 	}
 
-	//reset variables
 	IsCharging = false;
-	AmountCharged = 0.0f;
-
-	//start cooldown timer
-	IsCoolDown = true;
-}
-
-void AFPSCharacter::CoolDown()
-{
-	TimeToCoolDown--;
-
 }
 
 void AFPSCharacter::MoveForward(float Value)

@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "TimerManager.h"
 #include "FPSCharacter.generated.h"
 
 class UInputComponent;
@@ -67,8 +66,6 @@ protected:
 	/** Fires the charged projectile. */
 	void FireCharged();
 
-	void CoolDown();
-
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
@@ -79,13 +76,7 @@ protected:
 
 	float AmountCharged;
 
-	float TimeToCoolDown;
-
 	bool IsCharging;
-
-	bool IsCoolDown;
-
-	//const FTimer CoolDownTimer;
 
 public:
 	/** Returns Mesh1P subobject **/
