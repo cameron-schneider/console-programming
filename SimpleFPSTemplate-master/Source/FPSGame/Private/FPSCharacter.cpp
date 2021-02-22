@@ -32,7 +32,7 @@ AFPSCharacter::AFPSCharacter()
 
 	//starting val for amountcharged and timetocooldown
 	AmountCharged = 0.1f;
-	TimeToCoolDown = 0.0f;
+	TimeToCoolDown = MaxCooldown;
 
 	//starting val for isCharging and IsCoolDown
 	IsCharging = false;
@@ -61,25 +61,24 @@ void AFPSCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(IsCharging == true)
+	if(IsCharging)
 	{ 
-		if (AmountCharged <= 1.0f)
+		if (AmountCharged <= ChargeTime)
 		{
 			AmountCharged += DeltaTime;
 		}
 	}
 
-	if (IsCoolDown == true)
+	if (IsCoolDown)
 	{
-		if(TimeToCoolDown < 3.0f)
+		if(TimeToCoolDown > 0.0f)
 		{ 
-			TimeToCoolDown += DeltaTime;
+			TimeToCoolDown -= DeltaTime;
 		}
-		else if (TimeToCoolDown >= 3.0f)
+		else
 		{
-			TimeToCoolDown = 0.0f;
+			TimeToCoolDown = MaxCooldown;
 			IsCoolDown = false;
-
 		}
 	}
 
@@ -124,8 +123,10 @@ void AFPSCharacter::Fire()
 
 void AFPSCharacter::Charge()
 {
-	IsCharging = true;
-
+	if (!IsCoolDown)
+	{
+		IsCharging = true;
+	}
 }
 
 void AFPSCharacter::FireCharged()
@@ -134,57 +135,52 @@ void AFPSCharacter::FireCharged()
 	// try and fire a projectile
 	if (ChargedProjectileClass)
 	{ 
-		if (TimeToCoolDown <= 0.0f)
-		{ 
-		// Grabs location from the mesh that must have a socket called "Muzzle" in his skeleton
-		FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");
-		// Use controller rotation which is our view direction in first person
-		FRotator MuzzleRotation = GetControlRotation();
-
-		//Set Spawn Collision Handling Override
-		FActorSpawnParameters ActorSpawnParams;
-		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-
-		//
-		AFPSChargedProjectile* ChargedProjectile;
-
-		// spawn the projectile at the muzzle
-		ChargedProjectile = GetWorld()->SpawnActor<AFPSChargedProjectile>(ChargedProjectileClass, MuzzleLocation, MuzzleRotation, ActorSpawnParams);
-
-		ChargedProjectile->ChangeCharge(AmountCharged);
-
-		// try and play the sound if specified
-		if (FireSound)
+		if (!IsCoolDown)
 		{
-			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-		}
+			// Grabs location from the mesh that must have a socket called "Muzzle" in his skeleton
+			FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");
+			// Use controller rotation which is our view direction in first person
+			FRotator MuzzleRotation = GetControlRotation();
 
-		// try and play a firing animation if specified
-		if (FireAnimation)
-		{
-			// Get the animation object for the arms mesh
-			UAnimInstance* AnimInstance = Mesh1PComponent->GetAnimInstance();
-			if (AnimInstance)
+			//Set Spawn Collision Handling Override
+			FActorSpawnParameters ActorSpawnParams;
+			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+
+			//
+			AFPSChargedProjectile* ChargedProjectile;
+
+			// spawn the projectile at the muzzle
+			ChargedProjectile = GetWorld()->SpawnActor<AFPSChargedProjectile>(ChargedProjectileClass, MuzzleLocation, MuzzleRotation, ActorSpawnParams);
+
+			ChargedProjectile->ChangeCharge(AmountCharged);
+
+			// try and play the sound if specified
+			if (FireSound)
 			{
-				AnimInstance->PlaySlotAnimationAsDynamicMontage(FireAnimation, "Arms", 0.0f);
+				UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 			}
-		}
-		
+
+			// try and play a firing animation if specified
+			if (FireAnimation)
+			{
+				// Get the animation object for the arms mesh
+				UAnimInstance* AnimInstance = Mesh1PComponent->GetAnimInstance();
+				if (AnimInstance)
+				{
+					AnimInstance->PlaySlotAnimationAsDynamicMontage(FireAnimation, "Arms", 0.0f);
+				}
+			}
+
+
+			//reset variables
+			IsCharging = false;
+			AmountCharged = 0.0f;
+
+			//start cooldown timer
+			IsCoolDown = true;
+
 		}
 	}
-
-	//reset variables
-	IsCharging = false;
-	AmountCharged = 0.0f;
-
-	//start cooldown timer
-	IsCoolDown = true;
-}
-
-void AFPSCharacter::CoolDown()
-{
-	TimeToCoolDown--;
-
 }
 
 void AFPSCharacter::MoveForward(float Value)
