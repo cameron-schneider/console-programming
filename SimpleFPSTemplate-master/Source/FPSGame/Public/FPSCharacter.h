@@ -54,6 +54,18 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Gameplay")
 	UAnimSequence* FireAnimation;
 
+	UPROPERTY(BlueprintReadOnly)
+	float AmountCharged;
+
+	UPROPERTY(BlueprintReadOnly)
+	float TimeToCoolDown;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (ClampMin = "0.0"))
+	float MaxCooldown = 3.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (ClampMin = "0.1", ClampMax = "1.0"))
+	float ChargeTime;
+
 	virtual void Tick(float DeltaTime) override;
 
 protected:
@@ -67,8 +79,6 @@ protected:
 	/** Fires the charged projectile. */
 	void FireCharged();
 
-	void CoolDown();
-
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
@@ -76,10 +86,6 @@ protected:
 	void MoveRight(float Val);
 
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
-
-	float AmountCharged;
-
-	float TimeToCoolDown;
 
 	bool IsCharging;
 
