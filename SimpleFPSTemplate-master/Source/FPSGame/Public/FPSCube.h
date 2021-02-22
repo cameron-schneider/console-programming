@@ -6,9 +6,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "FPSBombActor.h"
+#include "FPSChargedProjectile.h"
 #include "FPSCube.generated.h"
 
 class AFPSBombActor;
+class AFPSChargedProjectile;
 class UStaticMeshComponent;
 
 
@@ -40,6 +42,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
 	TSubclassOf<AFPSBombActor> BombClass;
 
+	UPROPERTY(EditDefaultsOnly, Category = "ChargedProjectile")
+	TSubclassOf<AFPSChargedProjectile> ChargedProjectileClass;
+
 	//referenced Cameron's Step 2 branch: death delegate is called when health <= 0.0f
 	FDeathDelegate OnDeath;
 
@@ -64,7 +69,6 @@ public:
 
 	// Override of AActor::TakeDamage() for custom behavior
 	virtual float TakeDamage(float DamageTaken, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
-
 	
 
 };

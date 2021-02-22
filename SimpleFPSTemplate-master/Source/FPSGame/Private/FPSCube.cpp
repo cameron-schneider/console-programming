@@ -67,6 +67,8 @@ void AFPSCube::Tick(float DeltaTime)
 
 float AFPSCube::TakeDamage(float DamageTaken, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
+	TArray<AActor*> BlastImmuneActors;
+
 	Super::TakeDamage(DamageTaken, DamageEvent, EventInstigator, DamageCauser);
 
 	CurrentHealth -= DamageTaken;
@@ -79,9 +81,17 @@ float AFPSCube::TakeDamage(float DamageTaken, FDamageEvent const& DamageEvent, A
 	Scale *= 0.8f;										//scaling factor applied to copy of cubemesh's scale
 	CubeMesh->SetWorldScale3D(Scale);					//applying new scale to cubemesh
 
+	if (DamageCauser->IsA(ChargedProjectileClass))
+	{
+		//referenced this forum post https://community.gamedev.tv/t/applying-and-receiveing-radial-damage-in-c/111251/3 for what some of the arguments for this function need to be
+		UGameplayStatics::ApplyRadialDamage(GetWorld(), 3000.0f, GetActorLocation(), 500.0f, UDamageType::StaticClass(), BlastImmuneActors, this, nullptr, false, ECollisionChannel::ECC_PhysicsBody);
+	}
+
 	if (CurrentHealth <= 0)			//using health to determine when cube should be destroyed instead of scale like in tutorial code
 	{
 		OnDeath.Broadcast();
+		
+		
 	}
 
 	return 0.0f;

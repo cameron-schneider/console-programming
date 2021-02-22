@@ -2,6 +2,7 @@
 
 #include "FPSChargedProjectile.h"
 #include "FPSCube.h"
+#include "Kismet/GameplayStatics.h"
 
 
 
@@ -16,6 +17,7 @@ void AFPSChargedProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherAct
 		{
 			OtherActor->TakeDamage(100.0f * AmountCharged, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
 
+			//OtherActor->ApplyRadialDamage(200.0f, );
 		}
 
 		Destroy();

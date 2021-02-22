@@ -24,4 +24,7 @@ private:
 	// The explosion particle effect to spawn on death
 	UPROPERTY(EditDefaultsOnly)
     UParticleSystem* Explosion;
+
+public:
+	virtual float TakeDamage(float DamageTaken, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
 };

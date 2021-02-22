@@ -13,3 +13,10 @@ void ABombCube::DeathResponse()
 
 	Destroy();
 }
+
+float ABombCube::TakeDamage(float DamageTaken, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	Super::TakeDamage(DamageTaken, DamageEvent, EventInstigator, DamageCauser);
+
+	return 0.0f;
+}
