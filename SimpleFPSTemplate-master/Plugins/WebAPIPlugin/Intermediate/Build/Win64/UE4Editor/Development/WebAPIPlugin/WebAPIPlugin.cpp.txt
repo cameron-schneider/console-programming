@@ -1,2 +1,2 @@
-C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h
-C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public\WebAPIPlugin.h
+X:\Unreal_Stuff\Projects\Project2\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h
+X:\Unreal_Stuff\Projects\Project2\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public\WebAPIPlugin.h
