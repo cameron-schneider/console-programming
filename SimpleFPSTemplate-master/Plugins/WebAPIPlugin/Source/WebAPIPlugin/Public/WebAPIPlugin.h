@@ -33,9 +33,4 @@ public:
 	virtual void ShutdownModule() override;
 
 	FHttpModule* Http;
-
-	UFUNCTION(BlueprintCallable)
-	void HttpCall(const FString& URL, const FName& verb, FHttpHeaderInfo* header);
-
-	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 };

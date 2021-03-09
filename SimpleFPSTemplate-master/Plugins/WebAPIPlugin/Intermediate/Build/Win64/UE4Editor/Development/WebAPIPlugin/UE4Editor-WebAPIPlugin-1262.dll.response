@@ -34,9 +34,8 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
 "C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\HttpRestAPI.cpp.obj"
 "C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Module.WebAPIPlugin.cpp.obj"
-"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\HttpRestAPI.gen.cpp.obj"
-"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.init.gen.cpp.obj"
 "C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Module.WebAPIPlugin.gen.cpp.obj"
 "C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Default.rc2.res"
 "C:\Unreal\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Development\CoreUObject\UE4Editor-CoreUObject.lib"
@@ -71,8 +70,8 @@
 "setupapi.lib"
 "dwmapi.lib"
 "imm32.lib"
-/OUT:"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Binaries\Win64\UE4Editor-WebAPIPlugin.dll"
-/IMPLIB:"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\UE4Editor-WebAPIPlugin.suppressed.lib"
-/PDB:"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Binaries\Win64\UE4Editor-WebAPIPlugin.pdb"
+/OUT:"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Binaries\Win64\UE4Editor-WebAPIPlugin-1262.dll"
+/IMPLIB:"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\UE4Editor-WebAPIPlugin-1262.suppressed.lib"
+/PDB:"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Binaries\Win64\UE4Editor-WebAPIPlugin-1262.pdb"
 /ignore:4078
 /INCLUDE:IMPLEMENT_MODULE_WebAPIPlugin
