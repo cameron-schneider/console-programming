@@ -26,6 +26,9 @@ public class WebAPIPlugin : ModuleRules
 			new string[]
 			{
 				"Core",
+				"Http", 
+				"Json", 
+				"JsonUtilities",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);

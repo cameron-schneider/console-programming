@@ -14,8 +14,9 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-	AHttpActor();
 	FHttpModule* Http;
+
+	void HttpCall();
 
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 };

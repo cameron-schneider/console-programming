@@ -8,13 +8,12 @@ void FWebAPIPluginModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
 	Http = &FHttpModule::Get();
-	MyHttpCall();
 }
 
-void FWebAPIPluginModule::MyHttpCall()
+void FWebAPIPluginModule::HttpCall()
 {
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = Http->CreateRequest();
-	Request->OnProcessRequestComplete().BindUObject(this, &AHttpActor::OnResponseReceived);
+	Request->OnProcessRequestComplete().BindRaw(this, &FWebAPIPluginModule::OnResponseReceived);
 	//This is the url on which to process the request
 	Request->SetURL("https://www.quackit.com/json/tutorial/artists.txt");
 	Request->SetVerb("GET");

@@ -28,7 +28,7 @@
 /wd4244
 /wd4838
 /I .
-/I "C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Private"
+/I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Private
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime
 /I Runtime\CoreUObject\Public
@@ -560,9 +560,9 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
 /I Runtime\ClothingSystemRuntimeInterface
-/I "C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source"
-/I "C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public"
-/I "C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin"
+/I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source
+/I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public
+/I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -592,12 +592,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"
-/FI"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
-/Yu"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
-/Fp"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Private\WebAPIPlugin.cpp"
-/FI"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h"
-/Fo"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.cpp.obj"
+/FI"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
+/Yu"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
+/Fp"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.pch"
+"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Private\WebAPIPlugin.cpp"
+/FI"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h"
+/Fo"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.cpp.obj"
 /TP
 /GR-
 /W4
