@@ -599,9 +599,9 @@
 /FI"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
 /Yu"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
 /Fp"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Private\WebAPIPlugin.cpp"
+"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\WebAPIPlugin\WebAPIPlugin.gen.cpp"
 /FI"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h"
-/Fo"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.cpp.obj"
+/Fo"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.gen.cpp.obj"
 /TP
 /GR-
 /W4

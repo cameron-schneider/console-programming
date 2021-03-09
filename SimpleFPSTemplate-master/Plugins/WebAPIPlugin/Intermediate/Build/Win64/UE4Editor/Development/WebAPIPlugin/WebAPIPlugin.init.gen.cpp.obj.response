@@ -560,9 +560,13 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
 /I Runtime\ClothingSystemRuntimeInterface
+/I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\WebAPIPlugin
 /I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source
 /I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public
 /I C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\JsonUtilities
+/I Runtime\JsonUtilities\Public
+/I Runtime\JsonUtilities
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -595,9 +599,9 @@
 /FI"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
 /Yu"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h"
 /Fp"C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Private\WebAPIPlugin.cpp"
+"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\WebAPIPlugin\WebAPIPlugin.init.gen.cpp"
 /FI"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h"
-/Fo"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.cpp.obj"
+/Fo"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.init.gen.cpp.obj"
 /TP
 /GR-
 /W4
