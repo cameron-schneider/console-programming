@@ -8,3 +8,4 @@ C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\Interfaces/IHttpRespo
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\PlatformHttp.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\Windows/WindowsPlatformHttp.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\GenericPlatform/GenericPlatformHttp.h
+C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\WebAPIPlugin\WebAPIPlugin.generated.h

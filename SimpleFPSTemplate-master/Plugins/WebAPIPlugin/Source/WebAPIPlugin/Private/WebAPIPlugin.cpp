@@ -10,15 +10,22 @@ void FWebAPIPluginModule::StartupModule()
 	Http = &FHttpModule::Get();
 }
 
-void FWebAPIPluginModule::HttpCall()
+void FWebAPIPluginModule::HttpCall(const FString& URL, const FName& verb, FHttpHeaderInfo* header)
 {
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = Http->CreateRequest();
 	Request->OnProcessRequestComplete().BindRaw(this, &FWebAPIPluginModule::OnResponseReceived);
+
+
 	//This is the url on which to process the request
-	Request->SetURL("https://www.quackit.com/json/tutorial/artists.txt");
-	Request->SetVerb("GET");
-	Request->SetHeader(TEXT("User-Agent"), "X-UnrealEngine-Agent");
-	Request->SetHeader("Content-Type", TEXT("application/json"));
+	Request->SetURL(URL);
+	Request->SetVerb(verb.ToString());
+
+	for (int i = 0; i < header->headerNames.Num(); i++)
+	{
+		Request->SetHeader(header->headerNames[i], header->headerValues[i]);
+	}
+	
+
 	Request->ProcessRequest();
 }
 
