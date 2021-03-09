@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-WebAPIPlugin.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\WebAPIPlugin.cpp.obj"
+"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Default.rc2.res"
+/OUT:"C:\_School\Senior Shitshow\Second Sem\Console Programming\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\UE4Editor-WebAPIPlugin.lib"
+/INCLUDE:IMPLEMENT_MODULE_WebAPIPlugin
