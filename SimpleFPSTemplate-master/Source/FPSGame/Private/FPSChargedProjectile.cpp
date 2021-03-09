@@ -4,7 +4,13 @@
 #include "FPSCube.h"
 #include "Kismet/GameplayStatics.h"
 
+void AFPSChargedProjectile::BeginPlay()
+{
+	Super::BeginPlay();
 
+	FTimerHandle ExplodeTimerHandle;
+	GetWorldTimerManager().SetTimer(ExplodeTimerHandle, this, &AFPSChargedProjectile::Explode, ExplodeDelay, false);
+}
 
 void AFPSChargedProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
@@ -15,13 +21,47 @@ void AFPSChargedProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherAct
 
 		if (OtherActor->IsA<AFPSCube>())
 		{
-			OtherActor->TakeDamage(100.0f * AmountCharged, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
+
+			Explode();
+
+			//OtherActor->TakeDamage(100.0f * AmountCharged, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
 
 			//OtherActor->ApplyRadialDamage(200.0f, );
 		}
-
-		Destroy();
 	}
+}
+
+void AFPSChargedProjectile::Explode()
+{
+	UGameplayStatics::SpawnEmitterAtLocation(this, ExplosionTemplate, GetActorLocation());
+
+	FCollisionObjectQueryParams QueryParams;
+	QueryParams.AddObjectTypesToQuery(ECC_WorldDynamic);
+	QueryParams.AddObjectTypesToQuery(ECC_PhysicsBody);
+
+	FCollisionShape CollShape;
+	CollShape.SetSphere(500.0f);
+
+	TArray<FOverlapResult> OutOverlaps;
+	GetWorld()->OverlapMultiByObjectType(OutOverlaps, GetActorLocation(), FQuat::Identity, QueryParams, CollShape);
+
+	for (FOverlapResult Result : OutOverlaps)
+	{
+		UPrimitiveComponent* Overlap = Result.GetComponent();
+		if (Overlap && Overlap->IsSimulatingPhysics())
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString(Overlap->GetOwner()->GetClass()->GetSuperClass()->GetFName().ToString()));
+
+			if ((Overlap->GetOwner())->IsA<AFPSCube>())
+			{
+				//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "Hit");
+				Cast<AFPSCube>(Overlap->GetOwner())->TakeDamage(100.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
+				Overlap->GetOwner()->Destroy();
+			}
+		}
+	}
+
+	Destroy();
 }
 
 /*
