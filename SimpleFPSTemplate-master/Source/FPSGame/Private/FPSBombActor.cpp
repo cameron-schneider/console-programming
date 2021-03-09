@@ -53,9 +53,9 @@ void AFPSBombActor::Explode()
 		{
 			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString(Overlap->GetOwner()->GetClass()->GetSuperClass()->GetFName().ToString()));
 
-			if (Overlap->IsA<AFPSCube>)
+			if (Overlap->IsA<AFPSCube>())
 			{
-				Cast<AFPSCube>(Overlap->GetOwner())->TakeDamage();
+				Cast<AFPSCube>(Overlap->GetOwner())->TakeDamage(100.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
 				Overlap->GetOwner()->Destroy();
 			}
 		}
