@@ -81,8 +81,6 @@ public:
 
 private:
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
-
-	FHttpResponseAction<FString*>* LatentAction;
 };
 
 

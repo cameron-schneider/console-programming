@@ -21,6 +21,11 @@ FHttpModule* FWebAPIPluginModule::GetHttpModule(FWebAPIPluginModule* mod)
 	return mod->Http;
 }
 
+FHttpResponseAction<FString&>* FWebAPIPluginModule::GetHttpAction(FWebAPIPluginModule* mod)
+{
+	return mod->LatentAction;
+}
+
 #undef LOCTEXT_NAMESPACE
 	
 IMPLEMENT_MODULE(FWebAPIPluginModule, WebAPIPlugin)
