@@ -34,7 +34,6 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
 "C:\_School\console-programming\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Engine\SharedPCH.Engine.h.obj"
-"C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\HttpRestAPI.cpp.obj"
 "C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Module.WebAPIPlugin.cpp.obj"
 "C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Module.WebAPIPlugin.gen.cpp.obj"
 "C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Default.rc2.res"

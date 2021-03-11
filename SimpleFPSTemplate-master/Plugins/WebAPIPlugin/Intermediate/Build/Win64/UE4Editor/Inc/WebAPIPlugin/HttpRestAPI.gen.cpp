@@ -19,6 +19,7 @@ void EmptyLinkFunctionForGeneratedCodeHttpRestAPI() {}
 	WEBAPIPLUGIN_API UClass* Z_Construct_UClass_UHttpRestAPI();
 	ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FLatentActionInfo();
 // End Cross Module References
 class UScriptStruct* FHttpHeaderInfo::StaticStruct()
 {
@@ -125,12 +126,14 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 	DEFINE_FUNCTION(UHttpRestAPI::execHttpCall)
 	{
 		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_GET_PROPERTY_REF(FStrProperty,Z_Param_Out_Result);
 		P_GET_PROPERTY(FStrProperty,Z_Param_URL);
 		P_GET_PROPERTY_REF(FNameProperty,Z_Param_Out_verb);
 		P_GET_STRUCT(FHttpHeaderInfo,Z_Param_header);
+		P_GET_STRUCT(FLatentActionInfo,Z_Param_LatentInfo);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		UHttpRestAPI::HttpCall(Z_Param_WorldContextObject,Z_Param_URL,Z_Param_Out_verb,Z_Param_header);
+		UHttpRestAPI::HttpCall(Z_Param_WorldContextObject,Z_Param_Out_Result,Z_Param_URL,Z_Param_Out_verb,Z_Param_header,Z_Param_LatentInfo);
 		P_NATIVE_END;
 	}
 	void UHttpRestAPI::StaticRegisterNativesUHttpRestAPI()
@@ -146,11 +149,14 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 		struct HttpRestAPI_eventHttpCall_Parms
 		{
 			UObject* WorldContextObject;
+			FString Result;
 			FString URL;
 			FName verb;
 			FHttpHeaderInfo header;
+			FLatentActionInfo LatentInfo;
 		};
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_WorldContextObject;
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Result;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_URL_MetaData[];
 #endif
@@ -160,6 +166,7 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 #endif
 		static const UE4CodeGen_Private::FNamePropertyParams NewProp_verb;
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_header;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_LatentInfo;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
@@ -167,6 +174,7 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_WorldContextObject = { "WorldContextObject", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HttpRestAPI_eventHttpCall_Parms, WorldContextObject), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_Result = { "Result", nullptr, (EPropertyFlags)0x0010000000000180, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HttpRestAPI_eventHttpCall_Parms, Result), METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_URL_MetaData[] = {
 		{ "NativeConst", "" },
@@ -180,15 +188,20 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 #endif
 	const UE4CodeGen_Private::FNamePropertyParams Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_verb = { "verb", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HttpRestAPI_eventHttpCall_Parms, verb), METADATA_PARAMS(Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_verb_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_verb_MetaData)) };
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_header = { "header", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HttpRestAPI_eventHttpCall_Parms, header), Z_Construct_UScriptStruct_FHttpHeaderInfo, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_LatentInfo = { "LatentInfo", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(HttpRestAPI_eventHttpCall_Parms, LatentInfo), Z_Construct_UScriptStruct_FLatentActionInfo, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_WorldContextObject,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_Result,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_URL,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_verb,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_header,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::NewProp_LatentInfo,
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UHttpRestAPI_HttpCall_Statics::Function_MetaDataParams[] = {
 		{ "CallableWithoutWorldContext", "" },
+		{ "Latent", "" },
+		{ "LatentInfo", "LatentInfo" },
 		{ "ModuleRelativePath", "Public/HttpRestAPI.h" },
 		{ "WorldContext", "WorldContextObject" },
 	};
@@ -222,7 +235,7 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 		(UObject* (*)())Z_Construct_UPackage__Script_WebAPIPlugin,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_UHttpRestAPI_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UHttpRestAPI_HttpCall, "HttpCall" }, // 749662905
+		{ &Z_Construct_UFunction_UHttpRestAPI_HttpCall, "HttpCall" }, // 2841413240
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UHttpRestAPI_Statics::Class_MetaDataParams[] = {
@@ -258,7 +271,7 @@ static struct FScriptStruct_WebAPIPlugin_StaticRegisterNativesFHttpHeaderInfo
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UHttpRestAPI, 1089617578);
+	IMPLEMENT_CLASS(UHttpRestAPI, 3942303531);
 	template<> WEBAPIPLUGIN_API UClass* StaticClass<UHttpRestAPI>()
 	{
 		return UHttpRestAPI::StaticClass();

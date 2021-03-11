@@ -4,8 +4,19 @@
 #include "HttpRestAPI.h"
 #include "WebAPIPlugin.h"
 
-void UHttpRestAPI::HttpCall(UObject* WorldContextObject, const FString& URL, const FName& verb, FHttpHeaderInfo header)
+void UHttpRestAPI::HttpCall(UObject* WorldContextObject, FString& Result, const FString& URL, const FName& verb, FHttpHeaderInfo header, FLatentActionInfo LatentInfo)
 {
+	if (UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject))
+	{
+		FLatentActionManager& LatentActionManager = World->GetLatentActionManager();
+		if (LatentActionManager.FindExistingAction<FHttpResponseAction<FString*>>(LatentInfo.CallbackTarget, LatentInfo.UUID) == NULL)
+		{
+			LatentActionManager.AddNewAction(LatentInfo.CallbackTarget, LatentInfo.UUID, new FHttpResponseAction<FString&>(WorldContextObject, Result, LatentInfo));
+		}
+
+	}
+
+
 	FHttpModule* Http = FWebAPIPluginModule::GetHttpModule(FModuleManager::GetModulePtr<FWebAPIPluginModule>(FName("WebAPIPlugin")));
 
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = Http->CreateRequest();
@@ -26,7 +37,6 @@ void UHttpRestAPI::HttpCall(UObject* WorldContextObject, const FString& URL, con
 
 void UHttpRestAPI::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
-	//*
 	//Create a pointer to hold the json serialized data
 	TSharedPtr<FJsonObject> JsonObject;
 
@@ -36,20 +46,11 @@ void UHttpRestAPI::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr 
 	//Deserialize the json data given Reader and the actual object to deserialize
 	if (FJsonSerializer::Deserialize(Reader, JsonObject))
 	{
-		//Get the value of the json object by field name
-		TArray<TSharedPtr<FJsonValue>> objArray = JsonObject->GetArrayField("artists");
-		for (int32 i = 0; i < objArray.Num(); i++)
-		{
-			FString artist = objArray[i]->AsObject()->GetStringField(TEXT("artistname"));
-
-			GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Green, artist);
-
-		}
+		
 
 		//int32 recievedInt = JsonObject->GetIntegerField(objArray[0]->AsString());
 
 		//Output it to the engine
 		//GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Green, objArray[0]->AsString());
 	}
-	//*/
 }

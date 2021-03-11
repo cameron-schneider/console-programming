@@ -1,6 +1,6 @@
 C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\WebAPIPlugin\Definitions.WebAPIPlugin.h
-C:/_School/console-programming/SimpleFPSTemplate-master/Plugins/WebAPIPlugin/Source/WebAPIPlugin/Private/HttpRestAPI.cpp
-C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public\HttpRestAPI.h
+C:/_School/console-programming/SimpleFPSTemplate-master/Plugins/WebAPIPlugin/Source/WebAPIPlugin/Private/WebAPIPlugin.cpp
+C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public\WebAPIPlugin.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime/Online/HTTP/Public/Http.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\HttpModule.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\Interfaces/IHttpRequest.h
@@ -9,6 +9,3 @@ C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\Interfaces/IHttpRespo
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\PlatformHttp.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\Windows/WindowsPlatformHttp.h
 C:\Unreal\UE_4.26\Engine\Source\Runtime\Online\HTTP\Public\GenericPlatform/GenericPlatformHttp.h
-C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\WebAPIPlugin\HttpRestAPI.generated.h
-C:\_School\console-programming\SimpleFPSTemplate-master\Plugins\WebAPIPlugin\Source\WebAPIPlugin\Public\WebAPIPlugin.h
-C:/_School/console-programming/SimpleFPSTemplate-master/Plugins/WebAPIPlugin/Source/WebAPIPlugin/Private/WebAPIPlugin.cpp
