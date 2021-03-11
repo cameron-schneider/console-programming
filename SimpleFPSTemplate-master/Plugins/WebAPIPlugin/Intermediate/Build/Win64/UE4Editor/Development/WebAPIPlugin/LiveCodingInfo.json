@@ -6,7 +6,6 @@
 			"WebAPIPlugin.cpp.obj"
 		],
 		"Module.WebAPIPlugin.gen.cpp.obj": [
-			"WebAPIPlugin.gen.cpp.obj",
 			"HttpRestAPI.gen.cpp.obj",
 			"WebAPIPlugin.init.gen.cpp.obj"
 		]

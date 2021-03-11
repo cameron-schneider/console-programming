@@ -16,6 +16,11 @@ void FWebAPIPluginModule::ShutdownModule()
 	// we call this function before unloading the module.
 }
 
+FHttpModule* FWebAPIPluginModule::GetHttpModule(FWebAPIPluginModule* mod)
+{
+	return mod->Http;
+}
+
 #undef LOCTEXT_NAMESPACE
 	
 IMPLEMENT_MODULE(FWebAPIPluginModule, WebAPIPlugin)

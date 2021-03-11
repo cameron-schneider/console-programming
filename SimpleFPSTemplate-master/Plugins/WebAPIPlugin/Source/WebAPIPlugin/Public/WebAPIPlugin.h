@@ -5,23 +5,10 @@
 #include "CoreMinimal.h"
 #include "Runtime/Online/HTTP/Public/Http.h"
 #include "Modules/ModuleManager.h"
-#include "WebAPIPlugin.generated.h"
 
 namespace HttpVerb
 {
 	const FName Get = FName(TEXT("GET"));
-};
-
-USTRUCT(BlueprintType)
-struct FHttpHeaderInfo
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite)
-	TArray<FString> headerNames;
-
-	UPROPERTY(BlueprintReadWrite)
-	TArray<FString> headerValues;
 };
 
 
@@ -31,6 +18,8 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
+	static FHttpModule* GetHttpModule(FWebAPIPluginModule* mod);
 
 	FHttpModule* Http;
 };

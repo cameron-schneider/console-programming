@@ -3,13 +3,13 @@
 
 #include "HttpRestAPI.h"
 #include "WebAPIPlugin.h"
-#include "Modules/ModuleManager.h"
 
-void UHttpRestAPI::HttpCall(const FString& URL, const FName& verb, FHttpHeaderInfo header)
+void UHttpRestAPI::HttpCall(UObject* WorldContextObject, const FString& URL, const FName& verb, FHttpHeaderInfo header)
 {
+	FHttpModule* Http = FWebAPIPluginModule::GetHttpModule(FModuleManager::GetModulePtr<FWebAPIPluginModule>(FName("WebAPIPlugin")));
 
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = Http->CreateRequest();
-	Request->OnProcessRequestComplete().BindRaw(this, &UHttpRestAPI::OnResponseReceived);
+	Request->OnProcessRequestComplete().BindUObject(reinterpret_cast<UHttpRestAPI*>(WorldContextObject), &UHttpRestAPI::OnResponseReceived);
 
 	//This is the url on which to process the request
 	Request->SetURL(URL);
