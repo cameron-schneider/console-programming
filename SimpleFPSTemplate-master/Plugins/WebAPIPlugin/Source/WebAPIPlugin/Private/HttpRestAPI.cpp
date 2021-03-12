@@ -6,7 +6,6 @@
 
 void UHttpRestAPI::HttpCall(UObject* WorldContextObject, FString& Result, const FString& URL, const FName& verb, FHttpHeaderInfo header, FLatentActionInfo LatentInfo)
 {
-	FHttpModule* Http = FWebAPIPluginModule::GetHttpModule(FModuleManager::GetModulePtr<FWebAPIPluginModule>(FName("WebAPIPlugin")));
 	FHttpResponseAction<FString&>* LatentAction = FWebAPIPluginModule::GetHttpAction(FModuleManager::GetModulePtr<FWebAPIPluginModule>(FName("WebAPIPlugin")));
 
 	if (UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject))
@@ -20,6 +19,13 @@ void UHttpRestAPI::HttpCall(UObject* WorldContextObject, FString& Result, const 
 		}
 
 	}
+
+	HttpCall(WorldContextObject, URL, verb, header);
+}
+
+void UHttpRestAPI::HttpCall(UObject* WorldContextObject, const FString& URL, const FName& verb, FHttpHeaderInfo header)
+{
+	FHttpModule* Http = FWebAPIPluginModule::GetHttpModule(FModuleManager::GetModulePtr<FWebAPIPluginModule>(FName("WebAPIPlugin")));
 
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = Http->CreateRequest();
 	Request->OnProcessRequestComplete().BindUObject(reinterpret_cast<UHttpRestAPI*>(WorldContextObject), &UHttpRestAPI::OnResponseReceived);

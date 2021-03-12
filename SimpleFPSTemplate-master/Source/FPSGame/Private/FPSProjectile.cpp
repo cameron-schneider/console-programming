@@ -30,6 +30,7 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+	HasMissed = false;
 }
 
 
@@ -43,9 +44,14 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		if (OtherActor->IsA<AFPSCube>())
 		{
 			OtherActor->TakeDamage(25.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
-
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Hit"));
 		}
 
 		Destroy();
+	}
+	else if (!HasMissed)
+	{
+		HasMissed = true;
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Miss"));
 	}
 }

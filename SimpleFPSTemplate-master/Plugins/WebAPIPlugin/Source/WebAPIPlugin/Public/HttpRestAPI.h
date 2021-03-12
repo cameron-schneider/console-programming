@@ -79,6 +79,8 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject", CallableWithoutWorldContext, Latent, LatentInfo = "LatentInfo"))
 	static void HttpCall(UObject* WorldContextObject, FString& Result, const FString& URL, const FName& verb, FHttpHeaderInfo header, struct FLatentActionInfo LatentInfo);
 
+	static void HttpCall(UObject* WorldContextObject, const FString& URL, const FName& verb, FHttpHeaderInfo header);
+
 private:
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 };

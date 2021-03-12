@@ -26,7 +26,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	UProjectileMovementComponent* ProjectileMovement;
 
-
+	UPROPERTY()
+	bool HasMissed = false;
 
 public:
 
