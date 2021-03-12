@@ -10,6 +10,7 @@
 class UProjectileMovementComponent;
 class USphereComponent;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSendMessage, FString, text);
 
 UCLASS()
 class AFPSProjectile : public AActor
@@ -42,5 +43,7 @@ public:
 
 	/** Returns ProjectileMovement subobject **/
 	UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
+
+	FSendMessage message;
 };
 

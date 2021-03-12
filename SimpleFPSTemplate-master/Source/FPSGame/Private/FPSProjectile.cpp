@@ -44,7 +44,8 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		if (OtherActor->IsA<AFPSCube>())
 		{
 			OtherActor->TakeDamage(25.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
-			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Hit"));
+			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Hit"));
+			message.Broadcast("Hit");
 		}
 
 		Destroy();
@@ -52,6 +53,6 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	else if (!HasMissed)
 	{
 		HasMissed = true;
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Miss"));
+		message.Broadcast("Miss");
 	}
 }
