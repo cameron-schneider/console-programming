@@ -44,6 +44,7 @@ public:
 	/** Returns ProjectileMovement subobject **/
 	UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
 
+	UPROPERTY(BlueprintAssignable, Category = "FPSProjectile")
 	FSendMessage message;
 };
 
