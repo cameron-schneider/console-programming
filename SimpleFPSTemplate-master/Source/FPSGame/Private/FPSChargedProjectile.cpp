@@ -40,7 +40,7 @@ void AFPSChargedProjectile::Explode()
 	QueryParams.AddObjectTypesToQuery(ECC_PhysicsBody);
 
 	FCollisionShape CollShape;
-	CollShape.SetSphere(500.0f);
+	CollShape.SetSphere(200.0f);
 
 	TArray<FOverlapResult> OutOverlaps;
 	GetWorld()->OverlapMultiByObjectType(OutOverlaps, GetActorLocation(), FQuat::Identity, QueryParams, CollShape);
@@ -55,8 +55,8 @@ void AFPSChargedProjectile::Explode()
 			if ((Overlap->GetOwner())->IsA<AFPSCube>())
 			{
 				//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "Hit");
-				Cast<AFPSCube>(Overlap->GetOwner())->TakeDamage(100.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
-				Overlap->GetOwner()->Destroy();
+				Cast<AFPSCube>(Overlap->GetOwner())->TakeDamage((AmountCharged * 100.0f), FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
+				//Overlap->GetOwner()->Destroy();
 			}
 		}
 	}

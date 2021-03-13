@@ -30,7 +30,10 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
 	HasMissed = false;
+	DadURL = "https://icanhazdadjoke.com/";
+	KanyeURL = "https://api.kanye.rest/?format=text";
 }
 
 
@@ -44,8 +47,9 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		if (OtherActor->IsA<AFPSCube>())
 		{
 			OtherActor->TakeDamage(25.0f, FDamageEvent::FDamageEvent(), GetWorld()->GetFirstPlayerController(), this);
-			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Hit"));
-			message.Broadcast("Hit");
+			//FHttpHeaderInfo
+			//UHttpRestAPI::HttpCall(this, DadURL, "GET", );
+			message.Broadcast(DadURL);
 		}
 
 		Destroy();
@@ -53,6 +57,6 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	else if (!HasMissed)
 	{
 		HasMissed = true;
-		message.Broadcast("Miss");
+		message.Broadcast(KanyeURL);
 	}
 }
